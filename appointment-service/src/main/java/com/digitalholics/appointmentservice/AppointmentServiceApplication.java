@@ -1,4 +1,4 @@
-package com.example.appointmentservice;
+package com.digitalholics.appointmentservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
