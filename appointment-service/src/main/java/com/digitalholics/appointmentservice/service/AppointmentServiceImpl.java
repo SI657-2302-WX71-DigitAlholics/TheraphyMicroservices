@@ -58,6 +58,24 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.findAppointmentByTheraphyId(theraphyId);
     }
 
+     @Override
+    public Appointment update(Integer appointmentId, Appointment request) {
+        Set<ConstraintViolation<Appointment>> violations = validator.validate(request);
+
+        if (!violations.isEmpty())
+            throw new ResourceValidationException(ENTITY, violations);
+
+        return appointmentRepository.findById(appointmentId).map(appointment ->
+                        appointmentRepository.save(
+                                appointment.withTopic(request.getTopic())
+                                        .withDiagnosis(request.getDiagnosis())
+                                        .withDone(request.getDone())
+                                        .withPlace(request.getPlace())
+                                        .withHour(request.getHour())
+                                        .withDate(request.getDate())))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, appointmentId));
+    }
+
     @Override
     public Appointment create(CreateAppointmentResource appointmentResource) {
         Set<ConstraintViolation<CreateAppointmentResource>> violations = validator.validate(appointmentResource);
@@ -81,24 +99,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         return appointmentRepository.save(appointment);
 
-    }
-
-    @Override
-    public Appointment update(Integer appointmentId, Appointment request) {
-        Set<ConstraintViolation<Appointment>> violations = validator.validate(request);
-
-        if (!violations.isEmpty())
-            throw new ResourceValidationException(ENTITY, violations);
-
-        return appointmentRepository.findById(appointmentId).map(appointment ->
-                        appointmentRepository.save(
-                                appointment.withTopic(request.getTopic())
-                                        .withDiagnosis(request.getDiagnosis())
-                                        .withDone(request.getDone())
-                                        .withPlace(request.getPlace())
-                                        .withHour(request.getHour())
-                                        .withDate(request.getDate())))
-                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, appointmentId));
     }
 
     @Override
