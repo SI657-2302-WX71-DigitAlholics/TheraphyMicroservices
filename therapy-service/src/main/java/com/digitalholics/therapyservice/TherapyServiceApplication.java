@@ -1,13 +1,13 @@
-package com.example.theraphyservice;
+package com.digitalholics.therapyservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TheraphyServiceApplication {
+public class TherapyServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TheraphyServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TherapyServiceApplication.class, args);
+    }
 
 }
