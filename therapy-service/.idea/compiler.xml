@@ -18,7 +18,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="IoTheraphy" options="-parameters" />
-      <module name="appointment-service" options="-parameters" />
+      <module name="appointment-service" options="" />
       <module name="therapy-service" options="-parameters" />
     </option>
   </component>
