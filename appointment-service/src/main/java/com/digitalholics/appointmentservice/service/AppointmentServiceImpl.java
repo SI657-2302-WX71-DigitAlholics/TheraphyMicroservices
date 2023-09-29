@@ -28,11 +28,10 @@ public class AppointmentServiceImpl implements AppointmentService {
     private static final String ENTITY = "Appointment";
 
     private final AppointmentRepository appointmentRepository;
-    //private final TheraphyRepository theraphyRepository;
+
 
     private final Validator validator;
 
-    //public AppointmentServiceImpl(AppointmentRepository appointmenRepository, TheraphyRepository theraphyRepository, Validator validator) {
     public AppointmentServiceImpl(AppointmentRepository appointmenRepository, Validator validator) {
         this.appointmentRepository = appointmenRepository;
         this.validator = validator;
@@ -92,9 +91,6 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new ResourceValidationException(ENTITY,
                     "A Appointment with the same topic already exists.");
 
-        //Optional<Theraphy> theraphyOptional = theraphyRepository.findById(appointmentResource.getTheraphyId());
-
-        //Theraphy theraphy = theraphyOptional.orElseThrow(()-> new NotFoundException("This theraphy not foud with ID: "+ appointmentResource.getTheraphyId()));
         Appointment appointment = new Appointment();
 
         return appointmentRepository.save(appointment);
@@ -108,14 +104,4 @@ public class AppointmentServiceImpl implements AppointmentService {
             return ResponseEntity.ok().build();
         }).orElseThrow(()-> new ResourceNotFoundException(ENTITY,appointmentId));
     }
-
-//    @Override
-//    public List<Appointment> getAppointmentsByTheraphyByPatientId(Integer patientId) {
-//        return appointmentRepository.findAppointmentsByTheraphyByPatientId(patientId);
-//    }
-//
-//    @Override
-//    public List<Appointment> getAppointmentsByTheraphyByPhysiotherapistId(Integer physiotherapistId) {
-//        return appointmentRepository.findAppointmentsByTheraphyByPhysiotherapistId(physiotherapistId);
-//    }
 }

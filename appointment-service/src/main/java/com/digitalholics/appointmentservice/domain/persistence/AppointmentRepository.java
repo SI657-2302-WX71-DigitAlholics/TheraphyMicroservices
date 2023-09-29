@@ -10,15 +10,10 @@ import java.util.List;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
 
+    Appointment findAppointmentByTheraphyId(Integer theraphyId);
     Appointment findByTopic(String topic);
 
-    Appointment findAppointmentByTheraphyId(Integer theraphyId);
 
-    //@Query("select * from Appointment a inner join Theraphy b  on  a.theraphy.id = b.id where b.patientId = :patientId");
-//    @Query("select a from Appointment  a where a.theraphy.patientId.id = :patientId")
-//    List<Appointment> findAppointmentsByTheraphyByPatientId(Integer patientId);
-//
-//    @Query("select a from Appointment  a where a.theraphy.physiotheraphistId.id = :physiotherapistId")
-//    List<Appointment> findAppointmentsByTheraphyByPhysiotherapistId(Integer physiotherapistId);
+
 
 }
