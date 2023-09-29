@@ -29,17 +29,15 @@ public class TheraphyServiceImpl implements TheraphyService {
 
     private final TheraphyRepository theraphyRepository;
 
-//    private final PatientRepository patientRepository;
 
-//    private final PhysiotherapistRepository physiotherapistRepository;
+
+
 
     private final Validator validator;
 
-    //public TheraphyServiceImpl(TheraphyRepository theraphyRepository, PatientRepository patientRepository, PhysiotherapistRepository physiotherapistRepository, Validator validator) {
+    
     public TheraphyServiceImpl(TheraphyRepository theraphyRepository, Validator validator) {
         this.theraphyRepository = theraphyRepository;
-//        this.patientRepository = patientRepository;
-//        this.physiotherapistRepository = physiotherapistRepository;
         this.validator = validator;
     }
 
@@ -71,20 +69,13 @@ public class TheraphyServiceImpl implements TheraphyService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
-//        Optional<Patient> patientOptional = patientRepository.findById(theraphyResource.getPatientId());
-//        Optional<Physiotheraphist> physiotheraphistOptional = Optional.ofNullable(physiotherapistRepository.findPhysiotheraphistByUserUsername(username));
-
-//        Patient patient = patientOptional.orElseThrow(()-> new NotFoundException("This patient not found with ID: "+ theraphyResource.getPatientId()));
-//        Physiotheraphist physiotheraphist = physiotheraphistOptional.orElseThrow(()->new NotFoundException("This physiotherapist not found with ID: "+ username));
-
         Theraphy theraphy = new Theraphy();
         theraphy.setTheraphyName(theraphyResource.getTheraphyName());
         theraphy.setAppointmentQuantity(theraphyResource.getAppointmentQuantity());
         theraphy.setAppointmentGap(theraphyResource.getAppointmentGap());
         theraphy.setStartAt(theraphyResource.getStartAt());
         theraphy.setFinishAt(theraphyResource.getFinishAt());
-//        theraphy.setPatientId(patient);
-//        theraphy.setPhysiotheraphistId(physiotheraphist);
+
 
        return theraphyRepository.save(theraphy);
     }
