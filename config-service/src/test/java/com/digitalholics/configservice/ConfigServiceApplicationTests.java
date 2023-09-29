@@ -1,10 +1,10 @@
-package com.example.theraphyservice;
+package com.digitalholics.configservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TheraphyServiceApplicationTests {
+class ConfigServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
