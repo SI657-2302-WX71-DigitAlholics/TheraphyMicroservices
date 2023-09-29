@@ -10,8 +10,9 @@ import java.util.List;
 
 public interface AppointmentService {
 
-    List<Appointment> getAll();
     Page<Appointment> getAll(Pageable pageable);
+    List<Appointment> getAll();
+    
 
     Appointment getById(Integer appointmentId);
 
@@ -19,12 +20,10 @@ public interface AppointmentService {
 
     Appointment create(CreateAppointmentResource appointment);
 
+    ResponseEntity<?> delete(Integer appointmentId);
+    
     Appointment update(Integer appointmentId, Appointment request);
 
-    ResponseEntity<?> delete(Integer appointmentId);
-
-
-//    List<Appointment> getAppointmentsByTheraphyByPatientId(Integer patientId);
-//    List<Appointment> getAppointmentsByTheraphyByPhysiotherapistId(Integer physiotherapistId);
+    
 
 }
