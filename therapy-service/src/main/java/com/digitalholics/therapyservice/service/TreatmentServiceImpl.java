@@ -73,8 +73,6 @@ public class TreatmentServiceImpl implements TreatmentService {
         Theraphy theraphy = theraphyOptional.orElseThrow(() -> new NotFoundException("Theraphy not found with ID: " + treatmentResource.getTheraphyId()));
 
         Treatment treatment = new Treatment();
-
-        //if (theraphy.getPhysiotheraphistId().getUser().getUsername().equals(username)){
         return treatmentRepository.save(treatment);
     }
 
