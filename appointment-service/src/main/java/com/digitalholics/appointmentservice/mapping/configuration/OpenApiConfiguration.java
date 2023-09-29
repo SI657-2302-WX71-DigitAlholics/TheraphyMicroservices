@@ -26,7 +26,7 @@ public class OpenApiConfiguration implements WebMvcConfigurer {
                 .info(new Info()
                         .title("IoTheraphy API")
                         .version("1.0")
-                        .description("Theraphy RESTful API, made with java and springboot, applying domain-driven architecture approach.")
+                        .description("Theraphy RESTful API, made with java and springboot, applying domain-driven architecture approach to Fundamentos de Software Course.")
                         .termsOfService("https://digitalholics-3-0.github.io/Front-End-Theraphy/tos")
                         .license(new License()
                                 .name("Apache 2.0 License")

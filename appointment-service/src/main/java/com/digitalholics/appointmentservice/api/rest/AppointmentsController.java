@@ -40,19 +40,6 @@ public class AppointmentsController {
         return mapper.toResource(appointmentService.getAppointmentByTheraphyId(theraphyId));
     }
 
-
-//    @GetMapping("appointment/theraphy-patient/{patientId}")
-//    public Page<AppointmentResource> getAppointmentsByTheraphyByPatientId(@PathVariable Integer patientId, Pageable pageable) {
-//        return mapper.modelListPage(appointmentService.getAppointmentsByTheraphyByPatientId(patientId),pageable);
-//    }
-//
-//    @GetMapping("appointment/theraphy-physiotherapist/{physiotherapistId}")
-//    public Page<AppointmentResource> getAppointmentsByTheraphyByPhysiotherapistId(@PathVariable Integer physiotherapistId, Pageable pageable) {
-//        return mapper.modelListPage(appointmentService.getAppointmentsByTheraphyByPhysiotherapistId(physiotherapistId), pageable);
-//    }
-
-
-
     @PostMapping("create_appointment")
     public ResponseEntity<AppointmentResource> createAppointment(@RequestBody CreateAppointmentResource resource) {
         return new ResponseEntity<>(mapper.toResource(appointmentService.create((resource))), HttpStatus.CREATED);
@@ -69,4 +56,17 @@ public class AppointmentsController {
         return appointmentService.delete(appointmentId);
     }
 
+
+
+//    @GetMapping("appointment/theraphy-patient/{patientId}")
+//    public Page<AppointmentResource> getAppointmentsByTheraphyByPatientId(@PathVariable Integer patientId, Pageable pageable) {
+//        return mapper.modelListPage(appointmentService.getAppointmentsByTheraphyByPatientId(patientId),pageable);
+//    }
+//
+//    @GetMapping("appointment/theraphy-physiotherapist/{physiotherapistId}")
+//    public Page<AppointmentResource> getAppointmentsByTheraphyByPhysiotherapistId(@PathVariable Integer physiotherapistId, Pageable pageable) {
+//        return mapper.modelListPage(appointmentService.getAppointmentsByTheraphyByPhysiotherapistId(physiotherapistId), pageable);
+//    }
+
+    
 }
