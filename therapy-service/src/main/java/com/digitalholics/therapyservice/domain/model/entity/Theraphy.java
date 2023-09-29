@@ -22,7 +22,6 @@ public class Theraphy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     @NotNull
     @NotBlank
     @Column(name = "theraphy_name")
@@ -51,20 +50,8 @@ public class Theraphy {
     @Column(name = "finish_at")
     private String finishAt;
 
-
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER, mappedBy = "theraphy")
-//    private Set<Appointment> appointments = new HashSet<>();
-
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, mappedBy = "theraphy")
     private Set<Treatment> treatments = new HashSet<>();
-
-
-//    @ManyToOne
-//    private Patient patientId;
-//
-//    @ManyToOne
-//    private Physiotheraphist physiotheraphistId;
 
 }
