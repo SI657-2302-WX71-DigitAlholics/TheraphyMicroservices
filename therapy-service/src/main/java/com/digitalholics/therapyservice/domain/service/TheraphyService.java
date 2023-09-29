@@ -11,16 +11,15 @@ import java.util.List;
 
 public interface TheraphyService {
 
+    Theraphy create(CreateTheraphyResource theraphy);
+
+    ResponseEntity<?> delete(Integer theraphyId);
+    
     List<Theraphy> getAll();
 
     Page<Theraphy> getAll(Pageable pageable);
 
     Theraphy getById(Integer theraphyId);
 
-    Theraphy create(CreateTheraphyResource theraphy);
-
     Theraphy update(Integer theraphyId, Theraphy request);
-
-    ResponseEntity<?> delete(Integer theraphyId);
-
 }
