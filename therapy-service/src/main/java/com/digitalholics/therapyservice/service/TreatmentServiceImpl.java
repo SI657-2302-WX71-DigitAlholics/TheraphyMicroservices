@@ -56,16 +56,7 @@ public class TreatmentServiceImpl implements TreatmentService {
         return treatmentRepository.findById(treatmentId).orElseThrow(() -> new ResourceNotFoundException(ENTITY, treatmentId));
     }
 
-//    @Override
-//    public Treatment create(Treatment treatment) {
-//        Set<ConstraintViolation<Treatment>> violations = validator.validate(treatment);
-//
-//        if(!violations.isEmpty())
-//            throw new ResourceValidationException(ENTITY, violations);
-//
-//        return treatmentRepository.save(treatment);
-//    }
-//
+
 
     @Override
     public Treatment create(CreateTreatmentResource treatmentResource) {
@@ -82,8 +73,6 @@ public class TreatmentServiceImpl implements TreatmentService {
         Theraphy theraphy = theraphyOptional.orElseThrow(() -> new NotFoundException("Theraphy not found with ID: " + treatmentResource.getTheraphyId()));
 
         Treatment treatment = new Treatment();
-
-        //if (theraphy.getPhysiotheraphistId().getUser().getUsername().equals(username)){
         return treatmentRepository.save(treatment);
     }
 
