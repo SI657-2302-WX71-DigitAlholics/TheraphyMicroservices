@@ -14,4 +14,6 @@ public class CertificationResource {
     private String school;
     private Integer year;
     private String photoUrl;
+   
+    
 }
