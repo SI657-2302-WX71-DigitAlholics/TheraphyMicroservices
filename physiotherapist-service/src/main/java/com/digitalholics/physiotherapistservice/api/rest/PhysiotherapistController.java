@@ -31,16 +31,16 @@ public class PhysiotherapistController {
     public Page<PhysiotherapistResource> getAllPPhysiotherapist(Pageable pageable) {
         return mapper.modelListPage(physiotherapistService.getAll(), pageable);
     }
+    
+    @PostMapping("registration-physiotherapist")
+    public ResponseEntity<PhysiotherapistResource> createPhysiotherapist(@RequestBody CreatePhysiotherapistResource resource) {
+        return new ResponseEntity<>(mapper.toResource(physiotherapistService.create(resource)), HttpStatus.CREATED);
+    }
 
     @GetMapping("{physiotherapistId}")
     //@PreAuthorize("hasAuthority('patient:read')")
     public PhysiotherapistResource getPhysiotherapistById(@PathVariable Integer physiotherapistId) {
         return mapper.toResource(physiotherapistService.getById(physiotherapistId));
-    }
-
-    @PostMapping("registration-physiotherapist")
-    public ResponseEntity<PhysiotherapistResource> createPhysiotherapist(@RequestBody CreatePhysiotherapistResource resource) {
-        return new ResponseEntity<>(mapper.toResource(physiotherapistService.create(resource)), HttpStatus.CREATED);
     }
 
     @PatchMapping("{physiotherapistId}")
