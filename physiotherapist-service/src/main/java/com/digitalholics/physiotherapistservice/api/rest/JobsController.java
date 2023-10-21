@@ -43,7 +43,7 @@ public class JobsController {
         return new ResponseEntity<>(mapper.toResource(jobService.create(mapper.toModel(resource))), HttpStatus.CREATED);
     }
 
-    @PutMapping("updatedJobById{jobId}")
+    @PutMapping("updatedJobById/{jobId}")
     public JobResource updateJob(@PathVariable Integer jobId,
                                                      @RequestBody UpdateJobResource resource) {
         return mapper.toResource(jobService.update(jobId, mapper.toModel(resource)));
