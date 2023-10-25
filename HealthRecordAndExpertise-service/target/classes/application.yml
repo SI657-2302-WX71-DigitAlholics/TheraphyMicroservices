@@ -1,9 +1,10 @@
-
+server:
+  port: 8082
 spring:
   datasource:
-    url: jdbc:mysql://root:SBgLx4OICdtKM4wU5eLJ@containers-us-west-40.railway.app:6013/railway
+    url: jdbc:mysql://localhost:3306/health_records
     username: root
-    password: SBgLx4OICdtKM4wU5eLJ
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -15,18 +16,4 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
   application:
-    name: product-service
-  cloud:
-    config:
-      uri: http://localhost:8081
-      username: root
-      password: s3cr3t
-  boot:
-    admin:
-      client:
-        url: http://localhost:8086
-
-server:
-  port: 8081
-
-debug: true
+    name: health-records-service
