@@ -55,12 +55,21 @@ public class PatientServiceImpl implements PatientService {
         if (!violations.isEmpty())
             throw new ResourceValidationException(ENTITY, violations);
 
+        Patient patientWithEmail =patientRepository.findPatientByEmail(patientResource.getEmail());
+
+        if (patientWithEmail != null)
+            throw new ResourceValidationException(ENTITY,
+                    "There is already a patient with the same e-mail address.");
+
         Patient patient = new Patient();
-        patient.setAge(patientResource.getAge());
-        patient.setMedicalHistory(patientResource.getMedicalHistory());
-        patient.setUrl(patientResource.getUrl());
+        patient.setFirstname(patientResource.getFirstname());
+        patient.setLastname(patientResource.getLastname());
+        patient.setEmail(patientResource.getEmail());
+        patient.setPassword(patientResource.getPassword());
+        patient.setPhotoUrl(patientResource.getPhotoUrl());
         patient.setBirthday(patientResource.getBirthday());
         patient.setAppointmentQuantity(patientResource.getAppointmentQuantity());
+        patient.setLocation(patientResource.getLocation());
 
         return patientRepository.save(patient);
     }
@@ -74,11 +83,12 @@ public class PatientServiceImpl implements PatientService {
 
         return patientRepository.findById(patientId).map(patient ->
                 patientRepository.save(
-                        patient.withAge(request.getAge())
-                                .withMedicalHistory(request.getMedicalHistory())
-                                .withUrl(request.getUrl())
+                        patient.withFirstname(request.getFirstname())
+                                .withLastname(request.getLastname())
+                                .withPhotoUrl(request.getPhotoUrl())
                                 .withBirthday(request.getBirthday())
                                 .withAppointmentQuantity(request.getAppointmentQuantity())
+                                .withLocation(request.getLocation())
                 )).orElseThrow(() -> new ResourceNotFoundException(ENTITY, patientId));
     }
 
