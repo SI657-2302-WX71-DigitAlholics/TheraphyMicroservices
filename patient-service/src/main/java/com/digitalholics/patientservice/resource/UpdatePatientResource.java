@@ -7,11 +7,19 @@ import lombok.Setter;
 @Setter
 public class UpdatePatientResource {
 
-    private int age;
+    private String firstname;
 
-    private String medicalHistory;
+    private String lastname;
 
-    private String description;
+    private String email;
 
-    private String url;
+    private String password;
+
+    private String photoUrl;
+
+    private String birthday;
+
+    private String appointmentQuantity;
+
+    private String location;
 }

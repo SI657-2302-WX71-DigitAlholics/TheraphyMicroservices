@@ -25,19 +25,33 @@ public class Patient {
 
     @NotNull
     @NotBlank
-    @Column(name = "age")
-    private int age;
+    @Size(max = 50)
+    @Column(name = "firstname")
+    private String firstname;
 
     @NotNull
     @NotBlank
-    @Column(name = "medical_history")
-    private String medicalHistory;
+    @Size(max = 50)
+    @Column(name = "lastname")
+    private String lastname;
 
     @NotNull
     @NotBlank
-    @Column(name = "photo_url")
+    @Size(max = 50)
+    @Column(name = "email")
+    private String email;
+
+    @NotNull
+    @NotBlank
+    @Size(max = 50)
+    @Column(name = "password")
+    private String password;
+
+    @NotNull
+    @NotBlank
     @Size(max = 300)
-    private String url;
+    @Column(name = "photo_url")
+    private String photoUrl;
 
     @NotNull
     @NotBlank
@@ -51,7 +65,13 @@ public class Patient {
     @Size(max = 300)
     private String appointmentQuantity;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER, mappedBy = "patient")
-    private Set<Therapy> therapies = new HashSet<>();
+    @NotNull
+    @NotBlank
+    @Column(name = "location")
+    private String location;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "medical_history_id", referencedColumnName = "id")
+    private MedicalHistory medicalHistory;
+
 }
